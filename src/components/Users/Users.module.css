@@ -1,0 +1,9 @@
+.uPhoto img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.pad {
+    padding: 20px;
+}

@@ -1,0 +1,29 @@
+.nav {
+    grid-area: n;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 3px;
+  }
+
+.item a {
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.item a.active {
+  color: #ff3399;
+}
+
+.site img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.sitebarItem {
+  display: flex;
+}
+.site {
+  justify-content: center;
+}
