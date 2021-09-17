@@ -28,16 +28,42 @@ class Users extends React.Component {
         let pagesCount = Math.ceil (this.props.totalUsersCount / this.props.pageSize);
 
         let pages = [];
+
+        let endPage;
+        let startPage;
+
+        startPage = 1;
+        endPage = pagesCount;
+
+        if((this.props.currentPage) >= (startPage + 6)){
+            pages.push(1);
+        }
+        if((this.props.currentPage) >= (startPage + 7)){
+            pages.push('...');
+        }
+
         for (let i=1; i <= pagesCount; i++) {
+            if( this.props.currentPage <= (i+5) && this.props.currentPage >= (i-5))
             pages.push(i);
+        }
+
+        if((this.props.currentPage) <= (endPage - 7)){
+            pages.push('...');
+        }
+        if((this.props.currentPage) <= (endPage - 6)){
+            pages.push(pagesCount);
         }
 
         return <div>
         
         <div className={classes.cursor}>
             {pages.map(p => {
-                return <span className={this.props.currentPage === p && classes.selectPage}
-                onClick={ (e) => {this.onPageChanged(p); } }>{p}</span> 
+                    if(typeof p == 'number'){
+                    return <span className={`${classes.pagItem} ${this.props.currentPage === p ? classes.selectPage : ''}`}
+                onClick={ (e) => {this.onPageChanged(p); } }>{p}</span>
+            } else {
+                return <span className={`${classes.pagDot} ${this.props.currentPage === p ? classes.selectPage : ''}`}>{p}</span>
+            }
             })}
         </div>
 

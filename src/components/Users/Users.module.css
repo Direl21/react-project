@@ -13,9 +13,26 @@
 }
 
 .cursor {
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+
 }
 
-.Users_cursor__2-u8l {
-    padding: 10px
+.pagDot{
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #f8f8f8;
+    margin: 6px;
+}
+.pagItem{
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #f8f8f8;
+    cursor: pointer;
+    margin: 6px;
+}
+.pagItem:hover{
+    background: #eee;
 }
