@@ -38,8 +38,8 @@ const Users = (props) => {
         <div>
 
             <div className={classes.cursor}>
-                {pages.map(p => {
-                    if (typeof p == 'number') {
+                {pages.map(p =>  {
+                    if (typeof p == 'number' ) {
                         return <span className={`${classes.pagItem} ${props.currentPage === p ? classes.selectPage : ''}`}
                             onClick={(e) => { props.onPageChanged(p); }}>{p}</span>
                     } else {
@@ -47,28 +47,26 @@ const Users = (props) => {
                     }
                 })}
             </div>
-
-            {
-                props.users.map(u => <div className={classes.pad} key={u.id}>
-                    <span>
-                        <div className={classes.uPhoto}>
-                            <NavLink to={'/profile/' + u.id}>
-                                <img src={u.photos.small != null ? u.photos.small : userPhoto} />
-                            </NavLink>
-                        </div>
-                        <div>
-                            {u.followed ? <button onClick={() => (props.unfollow(u.id))} > unfollow</button> : <button onClick={() => (props.follow(u.id))} > follow</button>}
-                        </div>
-                    </span>
-                    <span>
-                        <div>{u.name}</div>
-                        <div>{u.status}</div>
-
-                        <div>{'u.location.country'}</div>
-                        <div>{'u.location.city'}</div>
-                    </span>
-                </div>)
-            }
+            <div className={classes.list}>
+                {
+                    props.users.map(u => <div className={classes.pad} key={u.id}>
+                        <span>
+                            <div className={classes.uPhoto}>
+                                <NavLink to={'/profile/' + u.id}>
+                                    <img src={u.photos.small != null ? u.photos.small : userPhoto} />
+                                </NavLink>
+                            </div>
+                            <div>
+                                {u.followed ? <button onClick={() => (props.unfollow(u.id))} > unfollow</button> : <button onClick={() => (props.follow(u.id))} > follow</button>}
+                            </div>
+                        </span>
+                        <span>
+                            <div>{u.name}</div>
+                            <div>{u.status}</div>
+                        </span>
+                    </div>)
+                }
+            </div>
         </div>
     )
 }

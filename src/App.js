@@ -2,14 +2,13 @@ import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import NavbarContainer from './components/Navbar/NavbarContainer';
-import Profile from './components/Profile/Profile';
 import News from './components/News/News';
 import Friends from './components/Friends/Friends';
 import Photos from './components/Photos/Photos';
 import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
-// tests d
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 const App = (props) => {
   return (
@@ -19,7 +18,7 @@ const App = (props) => {
         <div className="app-wrapper">
           <NavbarContainer />
           <div className="app-wrapper_content">
-            <Route path='/profile' render={ () => <Profile />} />
+            <Route path='/profile/:userId?' render={ () => <ProfileContainer />} />
             <Route path='/news' render={ () => <News />} />
           <Route path='/dialogs' render={ () => <DialogsContainer />} />
             <Route path='/friends' render={ () => <Friends />} />

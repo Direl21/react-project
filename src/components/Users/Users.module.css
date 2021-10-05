@@ -3,9 +3,22 @@
     height: 70px;
     border-radius: 50%;
 }
-
+.list{
+    display: flex;
+    flex-wrap: wrap;
+}
 .pad {
-    padding: 20px;
+    width: 33%;
+    margin: 10px 0.10%;
+    padding: 25px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-radius: 15px;
+    transition: all .3s;
+}
+
+.pad:hover {
+    background: #ffd4c9;
 }
 
 .selectPage {
