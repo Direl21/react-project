@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Users.module.css';
 import userPhoto from '../../assets/images/user.jpeg';
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
+import { usersAPI } from '../../api/api';
 
 
 const Users = (props) => {
@@ -61,15 +61,9 @@ const Users = (props) => {
                                 {u.followed 
                                     ? <button onClick={() => {
 
-                                        axios
-                                            .delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                                withCredentials: true,
-                                                headers: {
-                                                    "API-KEY": "473f79f8-62ae-4e43-9cda-f75899814654"
-                                                }
-                                            })
-                                            .then(response => {
-                                                if (response.data.resultCode == 0) {
+                                        usersAPI.userFollow(u)
+                                            .then(data => {
+                                                if (data.resultCode == 0) {
                                                     props.unfollow(u.id);
                                                 }
                                             })
@@ -78,15 +72,9 @@ const Users = (props) => {
                                     }}> unfollow</button> 
                                     : <button onClick={() => {
 
-                                        axios
-                                            .post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                                withCredentials: true,
-                                                headers: {
-                                                    "API-KEY": "473f79f8-62ae-4e43-9cda-f75899814654"
-                                                }
-                                            })
-                                            .then(response => {
-                                                if (response.data.resultCode == 0) {
+                                        usersAPI.userUnfollow(u)
+                                            .then(data => {
+                                                if (data.resultCode == 0) {
                                                     props.follow(u.id);
                                                 }
                                             })
